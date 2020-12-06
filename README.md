@@ -1,0 +1,1 @@
+# Sequence-Prediction-for-SiC-MOSFET-Active-Gate-Driving-with-Recurrent-Neural-Network
