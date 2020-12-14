@@ -16,3 +16,4 @@ It will be interesting to develop the 'fake review generator' utilizing the neur
 
 ## Neural Network Structure
 Inspired by the machine translation and auto-captioning applications, the AGD sequence predictor adopts the encoder-decoder structure. The encoder converts the switching targets to a context vector C, which is then decoded by the decoder to be the AGD sequence. Since the AGD sequence is essentially a time-series, GRU is adopted for the task. The figure below demonstrates the GRU based Encoder-Decoder Recurrent Neural Network (GRU-EDRNN).
+![Image1](/figures/ED_RNN.png)
