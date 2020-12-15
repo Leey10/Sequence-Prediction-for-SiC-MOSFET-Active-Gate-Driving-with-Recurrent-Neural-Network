@@ -20,5 +20,8 @@ Inspired by the machine translation and auto-captioning applications, the AGD se
 ![Image1](/figures/ED_RNN.png)
 
 ### 2.1 Training Data Structure
-The training data is pair of gate current Ig sequence and the corresponding switching results.
+The training data is a pair of gate current Ig sequence and the corresponding switching results. Figure below shows four example Ig sequences. Note that the Ig values are between 0.1A to 2.0A, the lengths of the generated Ig sequences are different corresponding to different switching transients, and the sequences are auto-padded to the maximum length with 0s.
+![Image1](/figures/data_Ig.png)
+
+
 ![Image1](/figures/data_SW.png)
