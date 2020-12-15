@@ -20,3 +20,5 @@ Inspired by the machine translation and auto-captioning applications, the AGD se
 ![Image1](/figures/ED_RNN.png)
 
 ### 2.1 Training Data Structure
+The training data is pair of gate current Ig sequence and the corresponding switching results.
+![Image1](/figures/data_SW.png)
