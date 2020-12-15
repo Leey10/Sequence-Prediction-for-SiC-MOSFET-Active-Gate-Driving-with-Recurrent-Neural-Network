@@ -23,5 +23,16 @@ Inspired by the machine translation and auto-captioning applications, the AGD se
 The training data is a pair of gate current Ig sequence and the corresponding switching results. Figure below shows four example Ig sequences. Note that the Ig values are between 0.1A to 2.0A, the lengths of the generated Ig sequences are different corresponding to different switching transients, and the sequences are auto-padded to the maximum length with 0s.
 ![Image1](/figures/data_Ig.png)
 
-
+Corresponding to the four example Ig sequences, there are four switching results as shown below. Using the MATLAB switching model developed, it is convenient to obtain the following switching results:
+- Overshoot : the Ids overshoot during turn-on
+- max. di/dt: the maximum di/dt value during the Sat-On and Sat-Off modes. Note that, there are negative values for max. di/dt since the absolute values are considered. And a negative value indicates that the max. di/dt occurs on the falling edge of Ids
+- mean di/dt: the average value of di/dt on the rising edge of Ids
+- max. dv/dt: the maximum dv/dt on the fall edge of Vds (absolute value)
+- Esw: the switching loss of the turn-on process covering Sat-On and Sat-Off modes
+- mean dv/dt-1: the average dv/dt during the Vds drop caused by commutation loop inductance
+- mean dv/dt-2: the main Vds drop interval where Coss is discharged rapidly
 ![Image1](/figures/data_SW.png)
+
+In this project, only Esw, mean di/dt and max. dv/dt are used.
+
+### 2.2 Encoder
