@@ -36,3 +36,7 @@ Corresponding to the four example Ig sequences, there are four switching results
 In this project, only Esw, mean di/dt and max. dv/dt are used.
 
 ### 2.2 Encoder
+In the training stage, the Encoder takes switching results as input, while in the inferring stage, it takes user defined switching targets. The Encoder in this project is a simple fully connected layer to convert the switching results/targets vector (length=3) to the context vector (length=360). No activation function is used for the FC layer, since it achieves the lowest training/validation losses compared to ReLU, Sigmoid and Tanh.
+
+### 2.3 Decoder
+The Decoder translates the context vector to AGD sequence. In the training stage, the Ig sequences are the inputs, and used to calculate the cross-entropy loss with the predictions. In the inferring stage, the prediction at step k will be used as the input for step k+1 untill the <end> has been predicted.
