@@ -41,7 +41,7 @@ In the training stage, the Encoder takes switching results as input, while in th
 ### 2.3 Decoder
 The Decoder translates the context vector to AGD sequence. In the training stage, the Ig sequences are the additional inputs, which are used to calculate the cross-entropy loss with the neural network predictions. In the inferring stage, the prediction at step k will be used as the input for step k+1 untill the <end> token has been predicted.
  
- ## Project Files
+ ## 3. Project Files
  1. *combined_Ig.csv*, *combined_trans.csv* : are the training data as introduced in 2.1. Note that the order of the rows in the two files cannot be changed, otherwise, the Ig seuqence and the switching results are not matched.
  2. *dataset.py* : includes the *TrainDataSet* and *ValidDataSet* classes. The padded zeros in the Ig sequences are first removed, the seuqence values are then converted to integers, the <start> (0) and <end> (21) tokens are added last. The *collate_fn* is defined for the *data.Dataloader()* in *Train.py*. The function is used to pack the Ig seuqences as required for *TORCH.NN.UTILS.RNN.PACK_PADDED_SEQUENCE()*.
  3. *model.py* : defines the Encoder and Decoder structure as described above. The packed inputs to GRU are realized by the [*pack_padded_sequence()*](https://stackoverflow.com/questions/51030782/why-do-we-pack-the-sequences-in-pytorch). The *sample()* method is defined for the inferring process, where the <start> token and the context vector are given to the neural network. The first prediction is then fed back to the neural network to make the second prediction until the <end> token is found.
