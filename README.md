@@ -12,7 +12,7 @@ There are evident similarities between the developed AGD sequence predictor and 
 1. the former takes switching targets as inputs and predicts AGD seuqence, while the latter takes the three review scores and generates fake reviews; 
 2. the switching targets are dependent since the Esw is strongly affected by both di/dt and dv/dt, while di/dt and dv/dt are relatively independent. This dependency feature is the same for the three review scores of the review generator.
 
-It will be interesting to develop the 'fake review generator' utilizing the neural network developed for the AGD sequence predictor.
+It is interesting to develop the 'fake review generator' utilizing the neural network developed for the AGD sequence predictor. The paper titled "Sequence Prediction for SiC MOSFET Active Gate Driving with Recurrent Neural Network" that describes this work in details is currently under review in IEEE Transactions on Power Electronics, it will be open sourced once it is accepted.
 
 ## 2. Neural Network Structure
 Inspired by the machine translation and auto-captioning applications, the AGD sequence predictor adopts the encoder-decoder structure. The encoder converts the switching targets to a context vector C, which is then decoded by the decoder to be the AGD sequence. Since the AGD sequence is essentially a time-series, GRU is adopted for the task. The figure below demonstrates the GRU based Encoder-Decoder Recurrent Neural Network (GRU-EDRNN).
@@ -39,4 +39,7 @@ In this project, only Esw, mean di/dt and max. dv/dt are used.
 In the training stage, the Encoder takes switching results as input, while in the inferring stage, it takes user defined switching targets. The Encoder in this project is a simple fully connected layer to convert the switching results/targets vector (length=3) to the context vector (length=360). No activation function is used for the FC layer, since it achieves the lowest training/validation losses compared to ReLU, Sigmoid and Tanh.
 
 ### 2.3 Decoder
-The Decoder translates the context vector to AGD sequence. In the training stage, the Ig sequences are the inputs, and used to calculate the cross-entropy loss with the predictions. In the inferring stage, the prediction at step k will be used as the input for step k+1 untill the <end> has been predicted.
+The Decoder translates the context vector to AGD sequence. In the training stage, the Ig sequences are the additional inputs, which are used to calculate the cross-entropy loss with the neural network predictions. In the inferring stage, the prediction at step k will be used as the input for step k+1 untill the <end> token has been predicted.
+ 
+ ## Project Files
+ 1. 
